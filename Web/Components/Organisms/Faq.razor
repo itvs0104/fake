@@ -1,0 +1,39 @@
+<section class="faq-area faq-bg" style="background-image: url('images/faq_bg.jpg')">
+    <div class="container-fluid px-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="section-title text-center mb-60">
+                    <span class="sub-title">rån frågetecken till tydlighet</span>
+                    <h2 class="title">Se svaren i våra vanliga frågor</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-xl-6">
+                <div class="faq-wrap">
+                    <Accordion Items="@_items" />
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-10 order-0 order-xl-2">
+                <div class="faq-img-wrap">
+                    <img src="images/faq_img01a.jpg" width={464} height={421} alt="" class="wow fadeInRight" data-wow-delay=".4s" } />
+                    <img src="images/faq_img02.jpg" width={464} height={421} alt="" class="wow fadeInRight" data-wow-delay=".2s" } />
+                    <div class="overlay-text wow fadeInUp" data-wow-delay=".6s">
+                        <h2 class="title">FAQ</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private Dictionary<string, string> _items = new()
+    {
+        { "Är ni verksamma i hela Sverige eller begränsade till vissa regioner?", "Vi är främst verksamma i Mälardalen men tar även uppdrag i regioner i omnejd, beroende på projektets storlek och karaktär." },
+        { "Kan jag köpa materialet själv?", "Du kan självklart köpa materialet själv men om du väljer att låta oss göra det får du del av vår rabatt som vi har hos vår bygghandlare." },
+        { "Kan ni hjälpa till med bygglovshandlingar?", "Ja, vi kan bistå dig med ansökan om bygglov och andra kommunala handlingar. Tillsammans med våra samarbetspartners som är specialiserade på bygglovshanteringen säkerställer vi en smidig och effektiv process samt att all dokumentation är komplett och korrekt ifylld." },
+        { "Kan ni hjälpa till med ROT-avdraget?", "Absolut! Vi ser till att ditt projekt uppfyller alla krav för ROT-avdrag och hjälper dig genom hela processen." },
+        { "Hur ser era garantier och kvalitetskontroller ut?", "Vi följer och lämnar alltid garantier enligt gällande lagstiftning för att säkerställa ditt skydd och trygghet. För att garantera högsta kvalitet på vårt arbete är det en självklarhet för oss att använda byggdagbok för noggrann dokumentation samt att genomföra egna kvalitetskontroller under hela projektets gång. På så sätt ser vi till att alla detaljer uppfyller våra höga standarder innan projektet överlämnas till dig." }
+    };
+}

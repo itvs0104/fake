@@ -1,0 +1,40 @@
+@if (string.IsNullOrEmpty(CurrentPage))
+{
+    <section class="testimonial-area-two pt-110">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="section-title text-center mb-50">
+                        <span class="sub-title">Kundglädje i fokus</span>
+                        <h2 class="title">Detta säger våra kunder om oss</h2>
+                    </div>
+                </div>
+            </div>
+            <Slider Reviews="CompanyReviews"/>
+        </div>
+    </section>
+}
+else
+{
+    <section class="inner-testimonial-area parallax pb-120 position-relative">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="section-title text-center mb-50">
+                        <span class="sub-title">Nöjda kunder - starka relationer</span>
+                        <h2 class="title">Personlig feedback för våra fantastiska medarbetare</h2>
+                    </div>
+                </div>
+            </div>
+            <Slider Reviews="TeamReviews"/>
+        </div>
+    </section>
+}
+
+@code {
+    [Parameter]
+    public string? CurrentPage { get; set; }
+
+    private IEnumerable<Review> TeamReviews { get; set; } = new List<Review>();
+    private IEnumerable<Review> CompanyReviews { get; set; } = new List<Review>();
+}

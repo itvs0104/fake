@@ -1,0 +1,16 @@
+<ul class="navigation">
+    @foreach (var item in NavItems)
+    {
+        <li>
+            <a href="@item.Key" @onclick="() => OnItemClicked.InvokeAsync()">@item.Value</a>
+        </li>
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public EventCallback OnItemClicked { get; set; } = EventCallback.Empty;
+
+    [Parameter]
+    public Dictionary<string, string> NavItems { get; set; } = new();
+}

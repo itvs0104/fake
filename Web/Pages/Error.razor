@@ -1,0 +1,26 @@
+@page "/error"
+
+<PageTitle>@PageTitle</PageTitle>
+
+<div class="error">
+    @switch (StatusCode)
+    {
+        case 404:
+            <img class="error-img" src="images/404.png" alt="Not found" />
+            break;
+        case 503:
+            <img class="error-img" src="images/503.png" alt="Service unavailable" />
+            break;
+        default:
+            <img class="error-img" src="images/500.jpg" alt="Server error" />
+            break;
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int? StatusCode { get; set; }
+
+    [Parameter]
+    public string? PageTitle { get; set; }
+}

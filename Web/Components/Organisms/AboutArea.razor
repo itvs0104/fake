@@ -1,0 +1,56 @@
+@if (string.IsNullOrEmpty(CurrentPage))
+{
+    <section class="about-area pb-120">
+        <div class="container-fluid px-lg-5">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-lg-6 order-0 order-lg-2">
+                    <Experiences />
+                </div>
+                <div class="col-xl-5 col-lg-6">
+                    <div class="about-content">
+                        <div class="section-title mb-25 tg-heading-subheading animation-style3">
+                            <span class="sub-title tg-element-title">Vi bygger mer än hus – vi bygger förtroende</span>
+                            <h2 class="title tg-element-title">Om oss</h2>
+                        </div>
+                        <p>Med lång erfarenhet i byggbranschen hjälper vi våra kunder med allt från mindre renoveringar till större byggprojekt över hela Mälardalen och omnejd.</p>
+                        <div class="about-list">
+                            <ul class="list-wrap">
+                                <li><i class="fas fa-check" />Professionella och drivna medarbetare</li>
+                                <li><i class="fas fa-check" />Brett nätverk av samarbetspartner och leverantörer</li>
+                                <li><i class="fas fa-check" />Tjänster som håller budgeten utan att sänka kvaliteten</li>
+                            </ul>
+                        </div>
+                        <a class="btn" href="/about" data-animation-in="fadeInUp" data-delay-in=".8" data-duration-in=".6">Läs mer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else 
+{
+    <section class="about-area inner-about-area pt-120 pb-120">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-lg-6 order-0 order-lg-2">
+                    <Experiences />
+                </div>
+                <div class="col-xl-5 col-lg-6">
+                    <div class="about-content">
+                        <div class="section-title mb-25">
+                            <span class="sub-title">Vi bygger mer än hus – vi bygger förtroende</span>
+                            <h2 class="title">Nykvarns Byggtjänst AB</h2>
+                        </div>
+                        <p>Med lång erfarenhet i byggbranschen hjälper vi våra kunder med allt från mindre renoveringar till större byggprojekt över hela Mälardalen och omnejd. Våra byggtjänster täcker nybyggnationer och renoveringar, både invändigt och utvändigt. Vi arbetar med allt från grundläggning och takläggning till fasadrenoveringar och inomhusrenoveringar – alltid med fokus på kvalitet och hållbarhet.</p>
+                        <p>Hos oss är det viktigaste att du som kund känner dig trygg och delaktig genom hela processen. Vi tror på ärlighet och bra kommunikation. Våra lösningar anpassas efter dina behov oavsett om det gäller att fixa till hemmet eller något större.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@code {
+    [Parameter]
+    public string? CurrentPage { get; set; }
+}

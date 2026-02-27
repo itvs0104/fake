@@ -1,0 +1,37 @@
+﻿@inherits LayoutComponentBase
+
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<div>
+    <Header IsSticky="@IsSticky" />
+    <main style="@(IsHomePage ? "" : "padding-top: 100px;")">
+        @Body
+    </main>
+    <Footer />
+    <ScrollToTop IsSticky="@IsSticky" />
+</div>
+
+@code {
+    public bool IsSticky = false;
+    private bool IsHomePage => NavigationManager.Uri.EndsWith("/", StringComparison.OrdinalIgnoreCase);
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeCarousel");
+            await JS.InvokeVoidAsync("checkScroll", DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public void SetScroll(bool isScrolled)
+    {
+        if (IsSticky != isScrolled)
+        {
+            IsSticky = isScrolled;
+            StateHasChanged();
+        }
+    }
+}

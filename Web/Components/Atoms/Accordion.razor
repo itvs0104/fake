@@ -1,0 +1,36 @@
+<div class="accordion">
+    @foreach (var item in Items.Select((value, index) => new { value, index }))
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" @onclick="() => ToggleActive(item.index)">
+                <button class="@(_activeIndex == item.index ? "accordion-button" : "accordion-button collapsed")">
+                    @item.value.Key
+                </button>
+            </h2>
+            <div class="accordion-collapse collapse @(_activeIndex == item.index ? "show" : "")">
+                <div class="accordion-body">
+                    <p>@item.value.Value</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Dictionary<string, string> Items { get; set; } = new();
+
+    private int? _activeIndex { get; set; }
+
+    private void ToggleActive(int index)
+    {
+        if (_activeIndex == index)
+        {
+            _activeIndex = null;
+        }
+        else
+        {
+            _activeIndex = index;
+        }
+    }
+}

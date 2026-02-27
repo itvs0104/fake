@@ -1,0 +1,59 @@
+@inject IJSRuntime JS
+
+<header class="menu-area @(IsSticky ? "sticky-menu" : "") transparent-header">
+    <div class="container-fluid px-lg-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="mobile-nav-toggler" @onclick="HandleToggle">
+                    <i class="fas fa-bars" />
+                </div>
+                <div class="menu-wrap">
+                    <nav class="menu-nav">
+                        <div class="logo different-logo">
+                            <img src="images/nb-logo-main.png" alt="main logo" />
+                        </div>
+                        <div class="logo d-none">
+                            <img src="images/nb-logo-no-slogan.png" alt="logo no-slogan" />
+                        </div>
+                        <div class="navbar-wrap main-menu d-none d-lg-flex">
+                            <NavMenu NavItems="@NavItems" />
+                        </div>
+                    </nav>
+                </div>
+                <div class="mobile-menu">
+                    <nav class="menu-box">
+                        <div class="close-btn" @onclick="HandleToggle">
+                            <i class="fas fa-times" />
+                        </div>
+                        <div class="menu-outer">
+                            <NavMenu NavItems="@NavItems" OnItemClicked="HandleToggle" />
+                        </div>
+                    </nav>
+                    <div class="menu-backdrop" />
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+@code {
+    [Parameter]
+    public bool IsSticky { get; set; }
+
+    public Dictionary<string, string> NavItems { get; set; } = new()
+    {
+        { "/", "Hem" },
+        { "/about", "Om oss" },
+        { "/services", "Tjänster" },
+        { "/projects", "Projekt" },
+        { "/contact", "Kontakt" }
+    };
+
+    private bool IsToggled = false;
+
+    private async Task HandleToggle()
+    {
+        IsToggled = !IsToggled;
+        await JS.InvokeVoidAsync("toggleMobileMenu", IsToggled);
+    }
+}

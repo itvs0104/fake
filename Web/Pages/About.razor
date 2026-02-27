@@ -1,0 +1,15 @@
+@page "/about"
+
+<PageTitle>Nykvarns Byggtjänst AB | @Page</PageTitle>
+
+<Breadcrumb CurrentPage="@Page" />
+
+<AboutArea CurrentPage="@Page"/>
+<div class="area-bg-five" style="background-image: url('images/area_bg05.jpg')">
+    <Team/>
+    <ReviewArea CurrentPage="@Page"/>
+</div>
+
+@code {
+    private const string Page = "Om oss";
+}

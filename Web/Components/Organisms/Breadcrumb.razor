@@ -1,0 +1,29 @@
+<section class="breadcrumb-area breadcrumb-bg mt-4" style="background-image: url('images/breadcrumb_bg.jpg')">
+    <div class="breadcrumb-shape" style="background-image: url('images/breadcrumb_shape.png')" />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content">
+                    <h2 class="title">@CurrentPage</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"> <a href="/">Hem</a></li>
+                            @if (PreviousPage is not null)
+                            {
+                                <li class="breadcrumb-item"> <a href="/@PreviousPage.Value.Item1">@PreviousPage.Value.Item2</a></li>
+                            }
+                            <li class="breadcrumb-item active" aria-current="page">@CurrentPage</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter]
+    public string CurrentPage { get; set; } = string.Empty;
+    [Parameter]
+    public (string, string)? PreviousPage { get; set; }
+}

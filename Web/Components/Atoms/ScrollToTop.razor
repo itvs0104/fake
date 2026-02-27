@@ -1,0 +1,20 @@
+@inject IJSRuntime JS
+
+<div>
+    @if (IsSticky)
+    {
+        <a class="scroll-top scroll-to-target open" href="javascript:void(0)" @onclick="HandleScrollToTop" aria-label="Back to top">
+            <i class="fas fa-level-up-alt"></i>
+        </a>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public bool IsSticky { get; set; }
+
+    private async Task HandleScrollToTop()
+    {
+        await JS.InvokeVoidAsync("scrollToTop");
+    }
+}
